@@ -1,0 +1,89 @@
+#dependencies .pbd files (don't need em)
+
+./[Dd]ependencies/*.pbd
+./[Dd]ependencies/[Ss]tickyfish/*.pbd
+./[Dd]ependencies/[Tt][Ll].[Ff]ramework/*.pbd
+./[Dd]ependencies/[Tt]riton[Cc]ore/*.pbd
+
+# visual studio
+
+obj/
+[Bb]in
+[Dd]ebug*/
+[Rr]elease*/
+*.sln.cache
+*.suo
+*.user
+*.vspscc
+*.vssscc
+*.cache
+*.bak
+*.log
+*.psess
+*.vsp
+_UpgradeReport_Files/
+Backup* 		#backup folder recursively
+UpgradeLog*.XML
+UpgradeLog*.htm
+App_Data		#app_data folder recursively
+Packages/ 		#packages folder recursively
+TestResults
+/Source/UGC_Contest/ContestAdmin/TL.Contest.AdminUI/Scripts/PoisonIvy/*
+/Source/UGC_Contest/ContestAdmin/TL.Contest.AdminUI/Content/PoisonIvy/*
+/Source/UGC_Contest/ContestClient/TL.Contest.WebUI/PhotoGalleryWidget/dist/*
+*.dgml
+
+#Ignore packages directory
+[Pp]ackages/
+
+
+# tools
+_ReSharper.*
+*.resharper.user
+_TeamCity*
+
+# operating system
+thumbs.db
+*.DS_Store
+Desktop.ini
+
+# Test Folder
+TestResults*	#TestResults folder recursively
+
+# Visual studio ide stuff
+.idea/*
+*.idea
+
+# Bower Components
+bower_components
+node_modules
+
+Source/UGC_Contest/ContestClient/TL.Contest.WebUI/Content/themes/basketball
+Source/UGC_Contest/ContestClient/TL.Contest.WebUI/Content/themes/clover
+Source/UGC_Contest/ContestClient/TL.Contest.WebUI/Content/themes/brkdark
+Source/UGC_Contest/ContestClient/TL.Contest.WebUI/Content/themes/comic
+Source/UGC_Contest/ContestClient/TL.Contest.WebUI/Content/themes/curtains
+Source/UGC_Contest/ContestClient/TL.Contest.WebUI/Content/themes/royal
+Source/UGC_Contest/ContestClient/TL.Contest.WebUI/Content/themes/sports
+Source/UGC_Contest/ContestClient/TL.Contest.WebUI/Content/themes/crimson
+
+bower_components
+node_modules
+*.scssc
+Source/UGC_Contest/ContestAdmin/TL.Contest.AdminUI/Content/CSS/dashboard.css.map
+Source/UGC_Contest/ContestClient/TL.Contest.WebUI/Content/**/*.map
+
+Source/UGC_Contest/ContestClient/TL.Contest.WebUI/ClientStandAlone/build
+
+# Ignore build directories. If we want to access the build directories, we can build these apps locally.
+Source/UGC_Contest/ContestClient/TL.Contest.WebUI/PhotoSubWidget/dist
+Source/UGC_Contest/ContestClient/TL.Contest.WebUI/PhotoGalleryWidget/dist
+Source/UGC_Contest/ContestClient/TL.Contest.WebUI/WinnersWidget/dist/
+
+# Ignore font-awesome in the PhotoSubWidget folder since it is already loaded on the container page
+Source/UGC_Contest/ContestClient/TL.Contest.WebUI/PhotoSubWidget/src/assets/css/font-awesome-4.3.0
+
+# Symlinked directory
+Source/UGC_Contest/ContestClient/TL.Contest.WebUI/Content/Brackets
+Source/UGC_Contest/ContestClient/TL.Contest.WebUI/Content/themes/layout.css
+Source/UGC_Contest/ContestClient/TL.Contest.WebUI/Content/themes/theme-selector.css
