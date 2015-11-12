@@ -50,7 +50,9 @@ namespace TD.NewmanRunner
 
                         if (config.ReportType != ReportType.None)
                         {
-                            var reportFileName = string.Format("{0}\\testResult_{1}_{2}.{3}", config.ReportFileLocation, env.ToSantizedString(), test.ToSantizedString(), config.ReportFileExtension);
+                            var envFileName = Path.GetFileNameWithoutExtension(env);
+                            var testFileName = Path.GetFileNameWithoutExtension(test);
+                            var reportFileName = string.Format("{0}\\testResult_{1}_{2}{3}", config.ReportFileLocation, envFileName.ToSantizedString(), testFileName.ToSantizedString(), config.ReportFileExtension);
                             command += string.Format(" {0} {1}", config.ReportCode, reportFileName);
                         }
                         Console.WriteLine("Excecuting Command: {0}", command);
