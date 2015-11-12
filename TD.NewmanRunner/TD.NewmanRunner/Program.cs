@@ -28,23 +28,23 @@ namespace TD.NewmanRunner
 
             var exitCode = 0;
 
-            var envCounter = 0;
+            var testCounter = 0;
             try
             {
                 var config = ConfigLoader.Load(args);
 
                 foreach (var env in config.Environment)
                 {
-                    envCounter++;
                     Console.WriteLine(string.Empty);
                     Console.WriteLine("----------------------------------------------------");
                     Console.WriteLine("Setting Environment File: {0}", env);
 
                     foreach (var test in config.Test)
                     {
+                        testCounter++;
                         Console.WriteLine("Setting Test Suite File: {0}", test);
 
-                        var command = string.Format("{0} -n {1} -e {2} -c {3}",
+                        var command = string.Format("{0} -n {1} -e {2} -c {3} -k",
                                                     config.NewmanCommand, 
                                                     config.Iteration,
                                                     env, 
@@ -52,7 +52,7 @@ namespace TD.NewmanRunner
 
                         if (config.ReportType != ReportType.None)
                         {
-                            command += string.Format(" {0} {1}", config.ReportCode, config.ReportFileLocation + "\\testResult_" + envCounter + config.ReportFileExtension);
+                            command += string.Format(" {0} {1}", config.ReportCode, config.ReportFileLocation + "\\testResult_" + testCounter + config.ReportFileExtension);
                         }
                         Console.WriteLine("Excecuting Command: {0}", command);
 
