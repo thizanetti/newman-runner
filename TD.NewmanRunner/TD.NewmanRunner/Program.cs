@@ -28,14 +28,12 @@ namespace TD.NewmanRunner
 
             var exitCode = 0;
 
-            var envCounter = 0;
             try
             {
                 var config = ConfigLoader.Load(args);
 
                 foreach (var env in config.Environment)
                 {
-                    envCounter++;
                     Console.WriteLine(string.Empty);
                     Console.WriteLine("----------------------------------------------------");
                     Console.WriteLine("Setting Environment File: {0}", env);
@@ -44,7 +42,7 @@ namespace TD.NewmanRunner
                     {
                         Console.WriteLine("Setting Test Suite File: {0}", test);
 
-                        var command = string.Format("{0} -n {1} -e {2} -c {3}",
+                        var command = string.Format("{0} -n {1} -e {2} -c {3} -k",
                                                     config.NewmanCommand, 
                                                     config.Iteration,
                                                     env, 
@@ -52,7 +50,8 @@ namespace TD.NewmanRunner
 
                         if (config.ReportType != ReportType.None)
                         {
-                            command += string.Format(" {0} {1}", config.ReportCode, config.ReportFileLocation + "\\testResult_" + envCounter + config.ReportFileExtension);
+                            var reportFileName = string.Format("{0}\\testResult_{1}_{2}.{3}", config.ReportFileLocation, env.ToSantizedString(), test.ToSantizedString(), config.ReportFileExtension);
+                            command += string.Format(" {0} {1}", config.ReportCode, reportFileName);
                         }
                         Console.WriteLine("Excecuting Command: {0}", command);
 
@@ -100,6 +99,32 @@ namespace TD.NewmanRunner
             process.Close();
             return exitCode;
 
+        }
+    }
+
+    public static class FileNameExtensions
+    {
+        public static string ToSantizedString(this string str)
+        {
+            const string asciiSafe = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
+            var outString = string.Empty;
+
+            foreach (var chr in str)
+            {
+                if (asciiSafe.Contains(chr))
+                {
+                    outString += chr;
+                }
+                else
+                {
+                    if (!outString.EndsWith("_"))
+                    {
+                        outString += "_";
+                    }
+                }
+            }
+
+            return outString;
         }
     }
 
